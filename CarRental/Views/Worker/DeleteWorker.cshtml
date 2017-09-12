@@ -1,0 +1,75 @@
+﻿@model CarRental.Database.Pracownicy
+
+@{
+    ViewBag.Title = "DeleteWorker";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Potwierdzenie usunięcia pracownika</h2>
+<div class="area">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="alert alert-danger">
+                <strong>Uwaga!</strong> Czy na pewno chcesz usunąć tego pracownika?
+            </div>
+        </div>
+        <dl class="dl-horizontal">
+            <dt>
+                Imię:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.imie)
+            </dd>
+
+            <dt>
+                Nazwisko:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nazwisko)
+            </dd>
+
+            <dt>
+                Data zatrudnienia:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.data_zatrudnienia)
+            </dd>
+
+            <dt>
+                Stanowisko:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stanowisko)
+            </dd>
+
+            <dt>
+                Login:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Konta.login)
+            </dd>
+
+            <dt>
+                Ulica:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Miejsca.ulica)
+            </dd>
+
+        </dl>
+
+        @Html.AntiForgeryToken()
+
+        @using (Html.BeginForm("DeleteWorker", "worker", FormMethod.Post))
+        {
+            <input type="submit" class="btn btn-danger" value="Potwierdź" />
+            @Html.ActionLink("Anuluj", "GetWorker", "worker", new { }, new { @class = "btn btn-default" })
+        }
+    </div>
+</div>

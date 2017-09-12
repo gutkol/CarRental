@@ -1,0 +1,77 @@
+﻿body {
+}
+
+.area {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.panel-body {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.panel-footer {
+    margin-top: 90px;
+    color: darkgrey; 
+    text-align: center;
+    font-size: smaller;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: #808080;
+}
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+/*wyregulowanie podswietlenia z przyciskow*/ 
+/*.nav-pills > li + li {
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+/*.nav {
+    border-bottom: 1px solid #808080; 
+}*/
+
+/*.nav > li > .spacer {
+    flex: 1;
+}*/
+
+#autamenu {
+    padding-top: 20px;
+    height: auto;
+    max-width: 100%;
+    border-top: 2px solid #808080;
+}
+
+p.styl-kontaktow {
+    font-size:large;
+}
+
+span {
+    color: red;
+}
+
+.glyphicons {
+    line-height: normal;
+}
+
+/* Nadawanie stylu dla błędu ValidationSummary */  
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
+
+.input-validation-error {
+    background-color: pink;
+    border: 1px solid red;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: red;
+}

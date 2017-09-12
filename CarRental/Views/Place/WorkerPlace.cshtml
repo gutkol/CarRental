@@ -1,0 +1,84 @@
+﻿@model CarRental.Models.WorkerPlaceModel
+
+@{
+    ViewBag.Title = "Dodaj Miejsce Pracy | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Dodaj Miejsce Pracy</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="row">
+                @Html.ValidationSummary()
+                @if (ViewBag.Message != null)
+                {
+                    <p>Pomyślnie dodano nową lokalizację firmy: </p><p style="color: #0b6800">@ViewBag.Message</p><br />
+                }
+                <form id="login-form" action="/place/WorkerPlace" method="post" role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Ulica:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Ulica, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Numer lokalu:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.NumerLokalu, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Miejscowość:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Miejscowosc, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Kod pocztowy:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.KodPocztowy, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Numer telefonu:</label>
+                            </div>
+                            <div class="col-md-6">
+                               @Html.TextBoxFor(x => x.NumerTelefonu, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-4">
+                                <input type="submit" value="Zarejestruj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+

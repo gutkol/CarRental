@@ -1,0 +1,67 @@
+﻿@model CarRental.Obiekt.SamochodyKontener
+@{
+    ViewBag.Title = "Rezerwacja | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Zarezerwuj samochód</h2>
+<div class="area">
+    
+        @Html.AntiForgeryToken()
+        <div class="col-md-12">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Marka</label>
+                        </th>
+                        <th>
+                            <label>Model</label>
+                        </th>
+                        <th>
+                            <label>Wyposażenie</label>
+                        </th>
+                        <th>
+                            <label>Typ</label>
+                        </th>
+                        <th>
+                            <label>Kolor</label>
+                        </th>
+                        <th>
+                            <label>Paliwo</label>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    @foreach (var item in ViewBag.ListaAut)
+                    {
+                        
+                        <tr>
+                            <td>@item.id_samochodu</td>
+                            <td>@item.Marka.marka1</td>
+                            <td>@item.Model.model1</td>
+                            <td>@item.Wyposazenie.rodzaj_wyp</td>
+                            <td>@item.Typ.typ1</td>
+                            <td>@item.Kolor.kolor1</td>
+                            <td>@item.Paliwo.rodzaj_paliwa</td>
+                            <td>
+                            @using (Html.BeginForm("GetOrder", "rentals", new {rentalmodel = Model ,id = @item.id_samochodu},FormMethod.Post))
+                            {
+                                <div class="btn-group btn-group-sm" role="group">
+                                    @*@Html.ActionLink("Zarezerwuj", "GetOrder", "rentals", new { id = item.id_samochodu}, new { @class = "btn btn-default" })*@
+                                    <input type="submit" class="btn btn-default" value="Zarezerwuj" />
+
+                                </div>
+                             }
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr style="width: 75%;" /><strong>@string.Format("Ilość pojazdów: {0}", ((IList<CarRental.Database.Samochody>)ViewBag.ListaAut).Count)</strong>
+            </div>
+        </div>
+    
+</div>

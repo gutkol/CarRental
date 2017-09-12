@@ -1,0 +1,116 @@
+﻿@model CarRental.Models.RegisterViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/LoginStyles.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.1.1.js" type="text/javascript"></script>
+    @*<script src="~/Scripts/LoginScript.js" language="javascript" type="text/javascript"></script>*@
+    <meta name="viewport" content="width=device-width" />
+    <title>Register | CarRental</title>
+    <style>
+        .field-validation-error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .input-validation-error {
+            background-color: pink;
+            border: 1px solid red;
+        }
+
+        .validation-summary-errors {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="/home/Login" id="login-form-link">Logowanie</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="#" class="active" id="register-form-link">Rejestracja</a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="register-form" action="home/Register" method="post" role="form" style="display: none;">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Imie, new { @class = "form-control text-capitalize", placeholder = "Imię" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Nazwisko, new { @class = "form-control text-capitalize", placeholder = "Nazwisko" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Login, new { @class = "form-control", placeholder = "Nazwa użytkownika" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Adres Email" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Hasło" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control", placeholder = "Potwierdź hasło" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.NumerTelefonu, new { @class = "form-control", placeholder = "Numer telefonu" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Pesel, new { @class = "form-control", placeholder = "PESEL" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Ulica, new { @class = "form-control text-capitalize", placeholder = "Ulica" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.NumerDomu, new { @class = "form-control", placeholder = "Numer domu" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.KodPocztowy, new { @class = "form-control", placeholder = "Kod pocztowy" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Miejscowosc, new { @class = "form-control text-capitalize", placeholder = "Miejscowość" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Wojewodztwo, new { @class = "form-control text-capitalize", placeholder = "Województwo" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Zarejestruj">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarRentalModelStoreContainer" CdmEntityContainer="CarRentalEntities">
+    <EntitySetMapping Name="Adres">
+      <EntityTypeMapping TypeName="CarRentalModel.Adres">
+        <MappingFragment StoreEntitySet="Adres">
+          <ScalarProperty Name="id_adresu" ColumnName="id_adresu" />
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_kodu_pocztowego" ColumnName="id_kodu_pocztowego" />
+          <ScalarProperty Name="id_miejscowosci" ColumnName="id_miejscowosci" />
+          <ScalarProperty Name="id_wojewodztwa" ColumnName="id_wojewodztwa" />
+          <ScalarProperty Name="ulica" ColumnName="ulica" />
+          <ScalarProperty Name="numer_domu" ColumnName="numer_domu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klienci">
+      <EntityTypeMapping TypeName="CarRentalModel.Klienci">
+        <MappingFragment StoreEntitySet="Klienci">
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_konta_kl" ColumnName="id_konta_kl" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="numer_tel" ColumnName="numer_tel" />
+          <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kod_Pocztowy">
+      <EntityTypeMapping TypeName="CarRentalModel.Kod_Pocztowy">
+        <MappingFragment StoreEntitySet="Kod_Pocztowy">
+          <ScalarProperty Name="id_kodu_pocztowego" ColumnName="id_kodu_pocztowego" />
+          <ScalarProperty Name="kod_pocztowy1" ColumnName="kod_pocztowy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KontaKl">
+      <EntityTypeMapping TypeName="CarRentalModel.KontaKl">
+        <MappingFragment StoreEntitySet="KontaKl">
+          <ScalarProperty Name="id_konta_kl" ColumnName="id_konta_kl" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="haslo" ColumnName="haslo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Miejscowosc">
+      <EntityTypeMapping TypeName="CarRentalModel.Miejscowosc">
+        <MappingFragment StoreEntitySet="Miejscowosc">
+          <ScalarProperty Name="id_miejscowosci" ColumnName="id_miejscowosci" />
+          <ScalarProperty Name="miejscowosc1" ColumnName="miejscowosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wojewodztwo">
+      <EntityTypeMapping TypeName="CarRentalModel.Wojewodztwo">
+        <MappingFragment StoreEntitySet="Wojewodztwo">
+          <ScalarProperty Name="id_wojewodztwa" ColumnName="id_wojewodztwa" />
+          <ScalarProperty Name="wojewodztwo1" ColumnName="wojewodztwo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

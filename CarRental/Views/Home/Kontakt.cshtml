@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Kontakt | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@section style {
+    <style>
+        .container .panel-body form input[type="text"],
+        .container .panel-body form input[type="email"],
+        .container .panel-body form textarea {
+            width: calc(100% - 24px);
+            font-size: 16px;
+            color: #454545;
+            border: #bebebe 1px solid;
+            padding: 7px;
+            margin: 0 0 25px 0;
+        }
+    </style>
+    }
+
+<h2 class="page-header">Kontakt</h2>
+<div class="area">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="styl-kontaktow">
+                <strong>Dane firmy:</strong><br />
+                CarRental Sp. z o.o<br />
+                32-500 Chrzanów,<br />
+                ul. Tajemnicza 20<br /><br />
+            </p>
+            <p class="styl-kontaktow">
+                <strong>Adres do korespodencji</strong><br />
+                ul. Al. 29 Listopada 60, 31-401 Kraków<br />
+                e-mail: <a href="mailto:#">kontakt@carrental.pl</a><br /><br />
+            </p>
+            <p class="styl-kontaktow">
+                <strong>Telefony:</strong><br />
+                <span style="color: #020e58;" class="glyphicon glyphicon-phone-alt"></span> (12) 123 12 31<br />
+                <span class="glyphicon glyphicon-phone"></span> 700 700 700<br /><br />
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <p class="styl-kontaktow"><strong>Formularz kontaktowy</strong></p>
+                <form class="contact-form" method="post">
+                    <p class="styl-kontaktow">
+                        <label>Imię i nazwisko <span>*</span></label>
+                        <input type="text" name="imie" value="" required />
+
+                        <label>E-mail <span>*</span></label>
+                        <input type="email" name="email" value="" required />
+
+                        <label>Temat</label>
+                        <input type="text" name="subject" value="" />
+
+                        <label>Treść zapytania <span>*</span></label>
+                        <textarea name="text" class="text" cols="10" rows="9" required></textarea>
+
+                        <button type="submit">
+                            Wyślij <span class="glyphicon glyphicon-send"></span>
+                        </button>
+
+                        <input type="hidden" name="action" value="send">
+
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿@model CarRental.Obiekt.SamochodyKontener
+
+@{
+    ViewBag.Title = "Strona główna | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@section style {
+    <style>
+        .box {
+            background-color: lavender;
+            width: auto;
+            margin: 5px 50px;
+            padding: 40px 0;
+        }
+    </style>
+    }
+
+@section script {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datapicker-pl.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#dt1").datepicker({
+                minDate: 0, maxDate: "+3m",
+                onSelect: function (date) {
+                    var date2 = $('#dt1').datepicker('getDate');
+                    date2.setDate(date2.getDate() + 1);
+                    $('#dt2').datepicker('setDate', date2);
+                    //ustawia date dt1 date + 1
+                    $('#dt2').datepicker('option', 'minDate', date2);
+                }
+            });
+            $('#dt2').datepicker({
+                maxData: "+6m",
+                onClose: function () {
+                    var dt1 = $('#dt1').datepicker('getDate');
+                    var dt2 = $('#dt2').datepicker('getDate');
+                    //check to prevent a user from entering a date below date of dt1
+                    if (dt2 <= dt1) {
+                        var minDate = $('#dt2').datepicker('option', 'minDate');
+                        $('#dt2').datepicker('setDate', minDate);
+                    }
+                }
+            });
+        });
+    </script>
+    }
+
+<h2 class="page-header">Strona główna</h2>
+@using (Html.BeginForm("Glowna", "home", FormMethod.Post))
+{
+<div class="area">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-2">
+                        <div class="form-group">
+                            Termin wypożyczenia:<br />
+                            <div class="input-group date">
+                                @*<input type="text" class="form-control" id="dt1" placeholder="Termin wypożyczenia">*@
+                                @Html.TextBoxFor(x => x.rentalmodelkontener.DataWyp, new { @class = "form-control", placeholder = "Termin wypożyczenia", id = "dt1" })
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            Termin oddania:<br />
+                            <div class="input-group date">
+                                @*<input type="text" class="form-control" id="dt2" placeholder="Termin oddania">*@
+                                @Html.TextBoxFor(x => x.rentalmodelkontener.DataOdd, new { @class = "form-control", placeholder = "Termin oddania", id = "dt2" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        Miejsce odbioru:<br />
+                        <div class="form-group">
+                            @Html.DropDownListFor(x => x.rentalmodelkontener.IDMiejsceWyp, ViewBag.listaMiejscPracy as SelectList, new { @class = "form-control" })
+                            @*<input type="checkbox" onclick="document.getElementById('MiejsceOdd').style.display = this.checked ? 'block' : 'none';"/> Zwróć samochód w innej lokalizacji*@
+                            @Html.CheckBoxFor(x => x.rentalmodelkontener.ReturnPlace, new { onclick = "document.getElementById('MiejsceOdd').style.display = this.checked ? 'block' : 'none';" }) Zwróć samochód w innej lokalizacji
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="MiejsceOdd" style="display: none;">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            Miejsce oddania:<br />
+                            @Html.DropDownListFor(x => x.rentalmodelkontener.IDMiejsceOdd, ViewBag.listaMiejscPracy as SelectList, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                       
+                            <input type="submit" class="btn btn-primary" style="padding: 15px 40px; font-size: 20px;" value="Szukaj"/>
+                        
+
+                        @*@Html.ActionLink("Szukaj", "GetOrder", "rentals", new { }, new { @class = "btn btn-primary", @style = "padding: 15px 40px; font-size: 20px;" })*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+

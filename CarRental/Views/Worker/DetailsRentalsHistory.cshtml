@@ -1,0 +1,197 @@
+﻿@model CarRental.Database.Wypozyczenia
+
+@{
+    ViewBag.Title = "Szczegóły";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Szczegóły</h2>
+
+<div class="area">
+    <div class="col-md-8">
+        <div class="row">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        <label>Imię klienta: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Klienci.imie)
+                    </dd>
+
+                    <dt>
+                        <label>Nazwisko klienta:</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Klienci.nazwisko)
+                    </dd>
+
+                    <dt>
+                        <label>PESEL: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Klienci.PESEL)
+                    </dd>
+
+                    <dt>
+                        <label>Imię pracownika: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Pracownicy.imie)
+                    </dd>
+
+                    <dt>
+                        <label>Nazwisko pracownika: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Pracownicy.nazwisko)
+                    </dd>
+
+                    <dt>
+                        <label>Miejsce pracy: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Miejsca.ulica)
+                    </dd>
+
+                    <dt>
+                        <label>Marka: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Marka.marka1)
+                    </dd>
+
+                    <dt>
+                        <label>Model: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Model.model1)
+                    </dd>
+
+                    <dt>
+                        <label>Paliwo: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Paliwo.rodzaj_paliwa)
+                    </dd>
+
+                    <dt>
+                        <label>Kolor: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Kolor.kolor1)
+                    </dd>
+
+                    <dt>
+                        <label>Wyposażenie: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Wyposazenie.rodzaj_wyp)
+                    </dd>
+
+                    <dt>
+                        <label>Miejsce pracy: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Miejsca.miejscowosc)
+                    </dd>
+
+                    <dt>
+                        <label>Pojemność silnika: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.poj_silnika)
+                    </dd>
+
+                    <dt>
+                        <label>Typ pojazdu: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.Typ.typ1)
+                    </dd>
+
+                    <dt>
+                        <label>Przebieg: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.przebieg)
+                    </dd>
+
+                    <dt>
+                        <label>Rok produkcji: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Samochody.rok_prod)
+                    </dd>
+
+                    <dt>
+                        <label>Miejsce wypozyczenia: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Miejsca.miejscowosc)
+                    </dd>
+
+                    <dt>
+                        <label>Miejsce oddania: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Miejsca1.miejscowosc)
+                    </dd>
+
+                    <dt>
+                        <label>Kaucja: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.kaucja)
+                    </dd>
+
+                    <dt>
+                        <label>Koszt: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.koszt)
+                    </dd>
+
+                    <dt>
+                        <label>Data wypożyczenia: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.data_wyp)
+                    </dd>
+
+                    <dt>
+                        <label>Data oddania: </label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.data_odd)
+                    </dd>
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Powrót", "RentalsHistory", "worker", new { }, new { @class = "btn btn-default" })
+            </p>
+        </div>
+    </div>
+</div>

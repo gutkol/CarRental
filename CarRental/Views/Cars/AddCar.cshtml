@@ -1,0 +1,123 @@
+﻿@model CarRental.Models.CarViewModel
+
+@{
+    ViewBag.Title = "Dodaj samochód | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Dodanie samochodu</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="row">
+                @Html.ValidationSummary()
+                @if (ViewBag.Car != null)
+                {
+                    <p>Pomyślnie dodano samochód w CarRental:</p><p><h4 style="color: #0b6800;">@ViewBag.Car</h4></p><br />
+                }
+                <form id="login-form" action="/cars/AddCar" method="post" role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Marka:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Marka, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Model:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Model, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Wyposażenie:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Wyposazenie, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Typ:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Typ, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Kolor:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Kolor, new { @class = "form-control capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Rodzaj paliwa:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Paliwo, new { @class = "form-control capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Rok produkcji:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Rok_produkcji, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Pojemność silnika:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Pojemnosc_silnika, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Przebieg:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Przebieg, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-4">
+                                <input type="submit" value="Zarejestruj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+

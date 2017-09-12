@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CarRental.Database.Pracownicy>
+
+@{
+    ViewBag.Title = "Pracownicy | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Pracownicy</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-12">
+            <div class="row">
+                @if (TempData["Edit"] != null)
+                {
+                    <div class="alert alert-success">Pomyślnie edytowano pracownika o ID: @TempData["Edit"]</div>
+                }
+                @if (TempData["Delete"] != null)
+                {
+                    <div class="alert alert-success">Pomyślnie usunięto pracownika o ID: @TempData["Delete"]</div>
+                }
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Imię</label>
+                        </th>
+                        <th>
+                            <label>Nazwisko</label>
+                        </th>
+                        <th>
+                            <label>Data zatrudnienia</label>
+                        </th>
+                        <th>
+                            <label>Stanowisko</label>
+                        </th>
+                        <th>
+                            <label>Miejsce Pracy</label>
+                        </th>
+                        <th>
+                            @Html.ActionLink("Dodaj Pracownika", "WorkerRegister", "worker", new { }, new { @class = "btn-sm btn-primary" })
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        Model.Count();
+                        <tr>
+                            <td>@item.id_pracownika</td>
+                            <td>@item.imie</td>
+                            <td>@item.nazwisko</td>
+                            <td>@item.data_zatrudnienia</td>
+                            <td>@item.stanowisko</td>
+                            <td>@item.Miejsca.miejscowosc</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    @Html.ActionLink("Edytuj", "EditWorker", "worker", new { id = item.id_pracownika }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Usuń", "DeleteWorker", "worker", new { id = item.id_pracownika }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Szczegóły", "DetailWorker", "worker", new { id = item.id_pracownika }, new { @class = "btn btn-default"})
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr style="width: 75%;" /><strong>Ilość wpisów: @Model.Count()</strong>
+            </div>
+        </div>
+    }
+</div>

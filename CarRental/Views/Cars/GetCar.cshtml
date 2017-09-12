@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CarRental.Database.Samochody>
+
+@{
+    ViewBag.Title = "Zarządzaj samochodami | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Zarządzaj samochodami</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-12">
+            <div class="row">
+                @if (TempData["Edit"] != null)
+                {
+                    <div class="alert alert-success">Pomyślnie edytowano samochód o ID: @TempData["Edit"]</div>
+                }
+                @if (TempData["Delete"] != null)
+                {
+                    <div class="alert alert-success">Pomyślnie usunięto samochód o ID: @TempData["Delete"]</div>
+                }
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Marka</label>
+                        </th>
+                        <th>
+                            <label>Model</label>
+                        </th>
+                        <th>
+                            <label>Wyposażenie</label>
+                        </th>
+                        <th>
+                            <label>Typ</label>
+                        </th>
+                        <th>
+                            <label>Kolor</label>
+                        </th>
+                        <th>
+                            <label>Paliwo</label>
+                        </th>
+                        <th>
+                            @Html.ActionLink("Dodaj samochód", "AddCar", "cars", new { }, new { @class = "btn-sm btn-primary" })
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        Model.Count();
+                        <tr>
+                            <td>@item.id_samochodu</td>
+                            <td>@item.Marka.marka1</td>
+                            <td>@item.Model.model1</td>
+                            <td>@item.Wyposazenie.rodzaj_wyp</td>
+                            <td>@item.Typ.typ1</td>
+                            <td>@item.Kolor.kolor1</td>
+                            <td>@item.Paliwo.rodzaj_paliwa</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    @Html.ActionLink("Edytuj", "EditCar", "cars", new { id = item.id_samochodu }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Usuń", "DeleteCar", "cars", new { id = item.id_samochodu }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Szczegóły", "DetailCar", "cars", new { id = item.id_samochodu }, new { @class = "btn btn-default"})
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr style="width: 75%;" /><strong>Ilość wpisów: @Model.Count()</strong>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,121 @@
+﻿@model CarRental.Database.Samochody
+
+@{
+    ViewBag.Title = "Edycja samochodu | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Edycja samochodu</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="row">
+                @Html.ValidationSummary()
+                <form id="login-form" action="/cars/EditCar" method="post" role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Marka:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.id_samochodu, new { @class = "hidden" })
+                                @Html.TextBoxFor(x => x.Marka.marka1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Model:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Model.model1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Wyposażenie:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Wyposazenie.rodzaj_wyp, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Typ:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Typ.typ1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Kolor:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Kolor.kolor1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Paliwo:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Paliwo.rodzaj_paliwa, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Rok produkcji:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.rok_prod, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Pojemność silnika:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.poj_silnika, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Przebieg:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.przebieg, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-4">
+                                <input type="submit" value="Zarejestruj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+

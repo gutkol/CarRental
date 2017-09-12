@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CarRental.Database.Wypozyczenia>
+
+@{
+    ViewBag.Title = "Historia zamówień | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Wypożyczenia</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-12">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Klient</label>
+                        </th>
+                        <th>
+                            <label>Pracownik</label>
+                        </th>
+                        <th>
+                            <label>Marka</label>
+                        </th>
+                        <th>
+                            <label>Model</label>
+                        </th>
+                        <th>
+                            <label>Miejsce wypożyczenia</label>
+                        </th>
+                        <th>
+                            <label>Miejsce oddania</label>
+                        </th>
+                        <th>
+                            <label>Kaucja</label>
+                        </th>
+                        <th>
+                            <label>Koszt</label>
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        Model.Count();
+                        <tr>
+                            <td>@item.id_wypozyczenia</td>
+                            <td>@item.Klienci.imie @item.Klienci.nazwisko</td>
+                            <td>@item.Pracownicy.imie @item.Pracownicy.nazwisko @item.Pracownicy.stanowisko</td>
+                            <td>@item.Samochody.Marka.marka1</td>
+                            <td>@item.Samochody.Model.model1</td>
+                            <td>@item.Miejsca.miejscowosc</td>
+                            <td>@item.Miejsca1.miejscowosc.</td>
+                            <td>@item.kaucja</td>
+                            <td>@item.koszt</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    @Html.ActionLink("Usuń", "", "worker", new { id = item.id_pracownika }, new { @class = "btn btn-default" })
+                                    @Html.ActionLink("Szczegóły", "DetailsRentalsHistory", "worker", new { id = item.id_wypozyczenia }, new { @class = "btn btn-default" })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr style="width: 75%;" /><strong>Ilość wpisów: @Model.Count()</strong>
+            </div>
+        </div>
+    }
+</div>

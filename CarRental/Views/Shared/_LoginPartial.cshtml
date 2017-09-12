@@ -1,0 +1,63 @@
+﻿@if (Session["Login"] != null)
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        if (Session["Privilege"].ToString() == "Użytkownik")
+        {
+            <ul class="nav nav-pills navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span> @Session["Login"] <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/History">Historia wypożyczeń</a></li>
+                    </ul>
+                </li>
+                <li><a href="/home/Logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+            </ul>
+        }
+        else
+        {
+            <ul class="nav nav-pills navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span> @Session["Login"] <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (Session["Privilege"].ToString() == "Administrator")
+                        {
+                            <li><a href="/worker/WorkerRegister">Zarejestruj pracownika</a></li>
+                                    <li><a href="/worker/GetWorker">Zarządzaj pracownikami</a></li>
+                                    <li><a href="/home/Register">Zarejestruj klienta</a></li>
+                                    <li><a href="/place/WorkerPlace">Utwórz miejsce pracy</a></li>
+                                    <li><a href="/place/GetWorkerPlace">Zarządzaj miejscami pracy</a></li>
+                                    <li><a href="/cars/AddCar">Dodaj samochód</a></li>
+                                    <li><a href="/cars/GetCar">Zarządzaj samochodami</a></li>
+                                    <li><a href="/worker/RentalsHistory">Historia wypożyczeń</a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a>Zarejestruj pracownika</a></li>
+                                    <li class="disabled"><a>Zarządzaj pracownikami</a></li>
+                                    <li class="disabled"><a>Utwórz miejsce pracy</a></li>
+                                    <li><a href="/home/Register">Zarejestruj klienta</a></li>
+                                    <li class="disabled"><a>Zarządzaj miejscami pracy</a></li>
+                                    <li><a href="/cars/AddCar">Dodaj samochód</a></li>
+                                    <li><a href="/cars/GetCar">Zarządzaj samochodami</a></li>
+                                    <li><a href="/worker/RentalsHistory">Historia wypożyczeń</a></li>
+                        }
+                    </ul>
+                </li>
+                <li><a href="/home/Logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+            </ul>
+        }
+    }
+}
+else
+{
+    <ul class="nav nav-pills navbar-right">
+        <li><a href="/home/Register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li><a href="/home/Login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+    </ul>
+}

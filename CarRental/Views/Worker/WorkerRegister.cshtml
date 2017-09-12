@@ -1,0 +1,125 @@
+﻿@model CarRental.Models.WorkerRegisterViewModel
+
+@{
+    ViewBag.Title = "WorkerRegister | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Rejestracja pracownika</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="row">
+                @Html.ValidationSummary()
+                @if (ViewBag.Account != null)
+                {
+                    <p>Pomyślnie zarejestrowano pracownika firmy CarRental:</p>
+                    <p><h4 style="color: #0b6800;">@ViewBag.Account</h4></p><br />
+                }
+                <form id="login-form" action="/worker/WorkerRegister" method="post" role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Nazwa użytkownika:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Login, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Hasło:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Potwierdź hasło:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Imię:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Imie, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Nazwisko:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Nazwisko, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Data zatrudnienia:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.DataZatrudnienia, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Stanowisko:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Stanowisko, new { @class = "form-control text-capitalize" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Miejsce pracy:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor( x => x.IDMiejscowoscPracy, ViewBag.listaMiejscPracy as SelectList , new { @class = "form-control" })
+                                @*@Html.DropDownListFor(x => x.MiejscowoscPracy, Model.listaMiejscPracy, new { @class = "form-control"})*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <div class="row">
+                           <div class="col-md-4 control-label">
+                               <label>Uprawnienie:</label>
+                           </div>
+                           <div class="col-md-6">
+                               @Html.DropDownListFor(x => x.Uprawnienie, new SelectList(Enum.GetNames(typeof(CarRental.Models.Uprawnienie))), new { @class = "form-control" })
+                           </div>
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-4">
+                                <input type="submit" value="Zarejestruj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+

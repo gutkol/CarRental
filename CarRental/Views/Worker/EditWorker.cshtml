@@ -1,0 +1,81 @@
+﻿@model CarRental.Database.Pracownicy
+
+@{
+    ViewBag.Title = "Edycja pracownika | CarRental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Edycja pracownika</h2>
+<div class="area">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="row">
+                @Html.ValidationSummary()
+                <form id="login-form" action="/worker/EditWorker" method="post" role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Imię:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.id_pracownika, new { @class = "hidden" })
+                                @Html.TextBoxFor(x => x.imie, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Nazwisko:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.nazwisko, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Data zatrudnienia:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.data_zatrudnienia, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Stanowisko:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.stanowisko, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 control-label">
+                                <label>Miejsce pracy:</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(x => x.Miejsca.miejscowosc, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-4">
+                                <input type="submit" value="Zarejestruj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+

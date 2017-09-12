@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="id_adresu" />
+    </Key>
+    <Property Name="id_adresu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_klienta" Type="int" Nullable="false" />
+    <Property Name="id_kodu_pocztowego" Type="int" Nullable="false" />
+    <Property Name="id_miejscowosci" Type="int" Nullable="false" />
+    <Property Name="id_wojewodztwa" Type="int" Nullable="false" />
+    <Property Name="ulica" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="numer_domu" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="id_klienta" />
+    </Key>
+    <Property Name="id_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_konta_kl" Type="int" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="numer_tel" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="PESEL" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kod_Pocztowy">
+    <Key>
+      <PropertyRef Name="id_kodu_pocztowego" />
+    </Key>
+    <Property Name="id_kodu_pocztowego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kod_pocztowy" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KontaKl">
+    <Key>
+      <PropertyRef Name="id_konta_kl" />
+    </Key>
+    <Property Name="id_konta_kl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="haslo" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Miejscowosc">
+    <Key>
+      <PropertyRef Name="id_miejscowosci" />
+    </Key>
+    <Property Name="id_miejscowosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="miejscowosc" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wojewodztwo">
+    <Key>
+      <PropertyRef Name="id_wojewodztwa" />
+    </Key>
+    <Property Name="id_wojewodztwa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="wojewodztwo" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="Adres_fk0">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk1">
+    <End Role="Kod_Pocztowy" Type="Self.Kod_Pocztowy" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kod_Pocztowy">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk2">
+    <End Role="Miejscowosc" Type="Self.Miejscowosc" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejscowosc">
+        <PropertyRef Name="id_miejscowosci" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_miejscowosci" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk3">
+    <End Role="Wojewodztwo" Type="Self.Wojewodztwo" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wojewodztwo">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Klienci_fk0">
+    <End Role="KontaKl" Type="Self.KontaKl" Multiplicity="1" />
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KontaKl">
+        <PropertyRef Name="id_konta_kl" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="id_konta_kl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarRentalModelStoreContainer">
+    <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kod_Pocztowy" EntityType="Self.Kod_Pocztowy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KontaKl" EntityType="Self.KontaKl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Miejscowosc" EntityType="Self.Miejscowosc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wojewodztwo" EntityType="Self.Wojewodztwo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Adres_fk0" Association="Self.Adres_fk0">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk1" Association="Self.Adres_fk1">
+      <End Role="Kod_Pocztowy" EntitySet="Kod_Pocztowy" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk2" Association="Self.Adres_fk2">
+      <End Role="Miejscowosc" EntitySet="Miejscowosc" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk3" Association="Self.Adres_fk3">
+      <End Role="Wojewodztwo" EntitySet="Wojewodztwo" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Klienci_fk0" Association="Self.Klienci_fk0">
+      <End Role="KontaKl" EntitySet="KontaKl" />
+      <End Role="Klienci" EntitySet="Klienci" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

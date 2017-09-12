@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="id_adresu" />
+    </Key>
+    <Property Name="id_adresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_klienta" Type="Int32" Nullable="false" />
+    <Property Name="id_kodu_pocztowego" Type="Int32" Nullable="false" />
+    <Property Name="id_miejscowosci" Type="Int32" Nullable="false" />
+    <Property Name="id_wojewodztwa" Type="Int32" Nullable="false" />
+    <Property Name="ulica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer_domu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.Adres_fk0" FromRole="Adres" ToRole="Klienci" />
+    <NavigationProperty Name="Kod_Pocztowy" Relationship="Self.Adres_fk1" FromRole="Adres" ToRole="Kod_Pocztowy" />
+    <NavigationProperty Name="Miejscowosc" Relationship="Self.Adres_fk2" FromRole="Adres" ToRole="Miejscowosc" />
+    <NavigationProperty Name="Wojewodztwo" Relationship="Self.Adres_fk3" FromRole="Adres" ToRole="Wojewodztwo" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="id_klienta" />
+    </Key>
+    <Property Name="id_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_konta_kl" Type="Int32" Nullable="false" />
+    <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer_tel" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk0" FromRole="Klienci" ToRole="Adres" />
+    <NavigationProperty Name="KontaKl" Relationship="Self.Klienci_fk0" FromRole="Klienci" ToRole="KontaKl" />
+  </EntityType>
+  <EntityType Name="Kod_Pocztowy">
+    <Key>
+      <PropertyRef Name="id_kodu_pocztowego" />
+    </Key>
+    <Property Name="id_kodu_pocztowego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kod_pocztowy1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk1" FromRole="Kod_Pocztowy" ToRole="Adres" />
+  </EntityType>
+  <EntityType Name="KontaKl">
+    <Key>
+      <PropertyRef Name="id_konta_kl" />
+    </Key>
+    <Property Name="id_konta_kl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="haslo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.Klienci_fk0" FromRole="KontaKl" ToRole="Klienci" />
+  </EntityType>
+  <EntityType Name="Miejscowosc">
+    <Key>
+      <PropertyRef Name="id_miejscowosci" />
+    </Key>
+    <Property Name="id_miejscowosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="miejscowosc1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk2" FromRole="Miejscowosc" ToRole="Adres" />
+  </EntityType>
+  <EntityType Name="Wojewodztwo">
+    <Key>
+      <PropertyRef Name="id_wojewodztwa" />
+    </Key>
+    <Property Name="id_wojewodztwa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="wojewodztwo1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk3" FromRole="Wojewodztwo" ToRole="Adres" />
+  </EntityType>
+  <Association Name="Adres_fk0">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk1">
+    <End Role="Kod_Pocztowy" Type="Self.Kod_Pocztowy" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kod_Pocztowy">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk2">
+    <End Role="Miejscowosc" Type="Self.Miejscowosc" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejscowosc">
+        <PropertyRef Name="id_miejscowosci" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_miejscowosci" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk3">
+    <End Role="Wojewodztwo" Type="Self.Wojewodztwo" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wojewodztwo">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Klienci_fk0">
+    <End Role="KontaKl" Type="Self.KontaKl" Multiplicity="1" />
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KontaKl">
+        <PropertyRef Name="id_konta_kl" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="id_konta_kl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarRentalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adres" EntityType="Self.Adres" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+    <EntitySet Name="Kod_Pocztowy" EntityType="Self.Kod_Pocztowy" />
+    <EntitySet Name="KontaKl" EntityType="Self.KontaKl" />
+    <EntitySet Name="Miejscowosc" EntityType="Self.Miejscowosc" />
+    <EntitySet Name="Wojewodztwo" EntityType="Self.Wojewodztwo" />
+    <AssociationSet Name="Adres_fk0" Association="Self.Adres_fk0">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk1" Association="Self.Adres_fk1">
+      <End Role="Kod_Pocztowy" EntitySet="Kod_Pocztowy" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk2" Association="Self.Adres_fk2">
+      <End Role="Miejscowosc" EntitySet="Miejscowosc" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk3" Association="Self.Adres_fk3">
+      <End Role="Wojewodztwo" EntitySet="Wojewodztwo" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Klienci_fk0" Association="Self.Klienci_fk0">
+      <End Role="KontaKl" EntitySet="KontaKl" />
+      <End Role="Klienci" EntitySet="Klienci" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

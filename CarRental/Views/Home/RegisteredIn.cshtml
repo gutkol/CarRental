@@ -1,0 +1,75 @@
+﻿@model CarRental.Models.RegisterViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>Zarejestrowano</title>
+    <style>
+        body {
+            background-color: #F1F1F1;
+        }
+        .center {
+            width: 700px;
+            height: 300px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .text {
+            width: 700px;
+            height: 300px;
+            text-align: center;
+            vertical-align:middle;
+            display: table-cell;
+        }
+        h1 {
+            color: #0b6800;
+        }
+    </style>
+    <script type="text/javascript">
+        if ('@Session["Login"]' != null)
+        {
+            setTimeout(function przekierowanie() {
+                window.location.href = "/home/Glowna";
+            }, 5000)
+        }
+        else
+        {
+            setTimeout(function przekierowanie() {
+                window.location.href = "/home/Login";
+            }, 5000)
+        }
+    </script>
+</head>
+<body>
+    <div class = "center">
+        <div class="text">
+            <h2>Pomyślnie zarejestrowano użytkwonika</h2><h1>@Model.Login</h1><br />
+            <p>Następuje przekierowanie na stronę logowania, proszę czekać ...<br />
+            lub użyj przycisku
+            @if(Session["Login"] != null)
+            {
+                <a href="/home/Glowna"> powrót</a>
+            }
+            else
+            {
+                <a href="/home/Login"> powrót</a>
+            }
+            </p>
+        </div>
+    </div>
+</body>
+</html>

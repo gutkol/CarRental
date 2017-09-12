@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarRentalModelStoreContainer" CdmEntityContainer="CarRentalEntities">
+    <EntitySetMapping Name="Adres">
+      <EntityTypeMapping TypeName="CarRentalModel.Adres">
+        <MappingFragment StoreEntitySet="Adres">
+          <ScalarProperty Name="id_adresu" ColumnName="id_adresu" />
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_kodu_pocztowego" ColumnName="id_kodu_pocztowego" />
+          <ScalarProperty Name="id_miejscowosci" ColumnName="id_miejscowosci" />
+          <ScalarProperty Name="id_wojewodztwa" ColumnName="id_wojewodztwa" />
+          <ScalarProperty Name="ulica" ColumnName="ulica" />
+          <ScalarProperty Name="numer_domu" ColumnName="numer_domu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klienci">
+      <EntityTypeMapping TypeName="CarRentalModel.Klienci">
+        <MappingFragment StoreEntitySet="Klienci">
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_konta_kl" ColumnName="id_konta_kl" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="numer_tel" ColumnName="numer_tel" />
+          <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kod_Pocztowy">
+      <EntityTypeMapping TypeName="CarRentalModel.Kod_Pocztowy">
+        <MappingFragment StoreEntitySet="Kod_Pocztowy">
+          <ScalarProperty Name="id_kodu_pocztowego" ColumnName="id_kodu_pocztowego" />
+          <ScalarProperty Name="kod_pocztowy1" ColumnName="kod_pocztowy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kolor">
+      <EntityTypeMapping TypeName="CarRentalModel.Kolor">
+        <MappingFragment StoreEntitySet="Kolor">
+          <ScalarProperty Name="id_koloru" ColumnName="id_koloru" />
+          <ScalarProperty Name="kolor1" ColumnName="kolor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Konta">
+      <EntityTypeMapping TypeName="CarRentalModel.Konta">
+        <MappingFragment StoreEntitySet="Konta">
+          <ScalarProperty Name="id_konta" ColumnName="id_konta" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="haslo" ColumnName="haslo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marka">
+      <EntityTypeMapping TypeName="CarRentalModel.Marka">
+        <MappingFragment StoreEntitySet="Marka">
+          <ScalarProperty Name="id_marki" ColumnName="id_marki" />
+          <ScalarProperty Name="marka1" ColumnName="marka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Miejsca">
+      <EntityTypeMapping TypeName="CarRentalModel.Miejsca">
+        <MappingFragment StoreEntitySet="Miejsca">
+          <ScalarProperty Name="id_miejsca" ColumnName="id_miejsca" />
+          <ScalarProperty Name="ulica" ColumnName="ulica" />
+          <ScalarProperty Name="numer" ColumnName="numer" />
+          <ScalarProperty Name="kod_pocztowy" ColumnName="kod_pocztowy" />
+          <ScalarProperty Name="miejscowosc" ColumnName="miejscowosc" />
+          <ScalarProperty Name="numer_tel" ColumnName="numer_tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Miejscowosc">
+      <EntityTypeMapping TypeName="CarRentalModel.Miejscowosc">
+        <MappingFragment StoreEntitySet="Miejscowosc">
+          <ScalarProperty Name="id_miejscowosci" ColumnName="id_miejscowosci" />
+          <ScalarProperty Name="miejscowosc1" ColumnName="miejscowosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Model">
+      <EntityTypeMapping TypeName="CarRentalModel.Model">
+        <MappingFragment StoreEntitySet="Model">
+          <ScalarProperty Name="id_modelu" ColumnName="id_modelu" />
+          <ScalarProperty Name="model1" ColumnName="model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paliwo">
+      <EntityTypeMapping TypeName="CarRentalModel.Paliwo">
+        <MappingFragment StoreEntitySet="Paliwo">
+          <ScalarProperty Name="id_paliwa" ColumnName="id_paliwa" />
+          <ScalarProperty Name="rodzaj_paliwa" ColumnName="rodzaj_paliwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownicy">
+      <EntityTypeMapping TypeName="CarRentalModel.Pracownicy">
+        <MappingFragment StoreEntitySet="Pracownicy">
+          <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+          <ScalarProperty Name="id_miejsca_pracy" ColumnName="id_miejsca_pracy" />
+          <ScalarProperty Name="id_konta_pr" ColumnName="id_konta_pr" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="data_zatrudnienia" ColumnName="data_zatrudnienia" />
+          <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Samochody">
+      <EntityTypeMapping TypeName="CarRentalModel.Samochody">
+        <MappingFragment StoreEntitySet="Samochody">
+          <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+          <ScalarProperty Name="id_wyposazenia" ColumnName="id_wyposazenia" />
+          <ScalarProperty Name="id_marki" ColumnName="id_marki" />
+          <ScalarProperty Name="id_modelu" ColumnName="id_modelu" />
+          <ScalarProperty Name="id_typu" ColumnName="id_typu" />
+          <ScalarProperty Name="id_koloru" ColumnName="id_koloru" />
+          <ScalarProperty Name="id_paliwa" ColumnName="id_paliwa" />
+          <ScalarProperty Name="rok_prod" ColumnName="rok_prod" />
+          <ScalarProperty Name="poj_silnika" ColumnName="poj_silnika" />
+          <ScalarProperty Name="przebieg" ColumnName="przebieg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CarRentalModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Typ">
+      <EntityTypeMapping TypeName="CarRentalModel.Typ">
+        <MappingFragment StoreEntitySet="Typ">
+          <ScalarProperty Name="id_typu" ColumnName="id_typu" />
+          <ScalarProperty Name="typ1" ColumnName="typ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uprawnienia">
+      <EntityTypeMapping TypeName="CarRentalModel.Uprawnienia">
+        <MappingFragment StoreEntitySet="Uprawnienia">
+          <ScalarProperty Name="id_uprawnienia" ColumnName="id_uprawnienia" />
+          <ScalarProperty Name="id_konta" ColumnName="id_konta" />
+          <ScalarProperty Name="uprawnienie" ColumnName="uprawnienie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wojewodztwo">
+      <EntityTypeMapping TypeName="CarRentalModel.Wojewodztwo">
+        <MappingFragment StoreEntitySet="Wojewodztwo">
+          <ScalarProperty Name="id_wojewodztwa" ColumnName="id_wojewodztwa" />
+          <ScalarProperty Name="wojewodztwo1" ColumnName="wojewodztwo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wyposazenie">
+      <EntityTypeMapping TypeName="CarRentalModel.Wyposazenie">
+        <MappingFragment StoreEntitySet="Wyposazenie">
+          <ScalarProperty Name="id_wyposazenia" ColumnName="id_wyposazenia" />
+          <ScalarProperty Name="rodzaj_wyp" ColumnName="rodzaj_wyp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wypozyczenia">
+      <EntityTypeMapping TypeName="CarRentalModel.Wypozyczenia">
+        <MappingFragment StoreEntitySet="Wypozyczenia">
+          <ScalarProperty Name="id_wypozyczenia" ColumnName="id_wypozyczenia" />
+          <ScalarProperty Name="id_samochodu" ColumnName="id_samochodu" />
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_pracownika" ColumnName="id_pracownika" />
+          <ScalarProperty Name="id_miejsca_wyp" ColumnName="id_miejsca_wyp" />
+          <ScalarProperty Name="id_miejsca_odd" ColumnName="id_miejsca_odd" />
+          <ScalarProperty Name="data_wyp" ColumnName="data_wyp" />
+          <ScalarProperty Name="data_odd" ColumnName="data_odd" />
+          <ScalarProperty Name="koszt" ColumnName="koszt" />
+          <ScalarProperty Name="kaucja" ColumnName="kaucja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c60678c402bf427dae1c37fe3b8a46e8" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalModel.Adres" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Klienci" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Kod_Pocztowy" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Kolor" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Konta" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Marka" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Miejsca" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Miejscowosc" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Model" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Paliwo" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Pracownicy" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Samochody" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Typ" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Uprawnienia" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Wojewodztwo" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Wyposazenie" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.Wypozyczenia" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="CarRentalModel.Adres_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Adres_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Adres_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Adres_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Klienci_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Wypozyczenia_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk4" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Pracownicy_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Uprawnienia_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Pracownicy_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Wypozyczenia_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Wypozyczenia_fk4" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk5" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Wypozyczenia_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Samochody_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.Wypozyczenia_fk0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

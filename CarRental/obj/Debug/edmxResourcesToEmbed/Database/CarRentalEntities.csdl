@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="id_adresu" />
+    </Key>
+    <Property Name="id_adresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_klienta" Type="Int32" Nullable="false" />
+    <Property Name="id_kodu_pocztowego" Type="Int32" Nullable="false" />
+    <Property Name="id_miejscowosci" Type="Int32" Nullable="false" />
+    <Property Name="id_wojewodztwa" Type="Int32" Nullable="false" />
+    <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer_domu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.Adres_fk0" FromRole="Adres" ToRole="Klienci" />
+    <NavigationProperty Name="Kod_Pocztowy" Relationship="Self.Adres_fk1" FromRole="Adres" ToRole="Kod_Pocztowy" />
+    <NavigationProperty Name="Miejscowosc" Relationship="Self.Adres_fk2" FromRole="Adres" ToRole="Miejscowosc" />
+    <NavigationProperty Name="Wojewodztwo" Relationship="Self.Adres_fk3" FromRole="Adres" ToRole="Wojewodztwo" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="id_klienta" />
+    </Key>
+    <Property Name="id_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_konta_kl" Type="Int32" Nullable="false" />
+    <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk0" FromRole="Klienci" ToRole="Adres" />
+    <NavigationProperty Name="Konta" Relationship="Self.Klienci_fk0" FromRole="Klienci" ToRole="Konta" />
+    <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk1" FromRole="Klienci" ToRole="Wypozyczenia" />
+  </EntityType>
+  <EntityType Name="Kod_Pocztowy">
+    <Key>
+      <PropertyRef Name="id_kodu_pocztowego" />
+    </Key>
+    <Property Name="id_kodu_pocztowego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kod_pocztowy1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk1" FromRole="Kod_Pocztowy" ToRole="Adres" />
+  </EntityType>
+  <EntityType Name="Kolor">
+    <Key>
+      <PropertyRef Name="id_koloru" />
+    </Key>
+    <Property Name="id_koloru" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kolor1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk4" FromRole="Kolor" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Konta">
+    <Key>
+      <PropertyRef Name="id_konta" />
+    </Key>
+    <Property Name="id_konta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="haslo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.Klienci_fk0" FromRole="Konta" ToRole="Klienci" />
+    <NavigationProperty Name="Pracownicy" Relationship="Self.Pracownicy_fk1" FromRole="Konta" ToRole="Pracownicy" />
+    <NavigationProperty Name="Uprawnienia" Relationship="Self.Uprawnienia_fk0" FromRole="Konta" ToRole="Uprawnienia" />
+  </EntityType>
+  <EntityType Name="Marka">
+    <Key>
+      <PropertyRef Name="id_marki" />
+    </Key>
+    <Property Name="id_marki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marka1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk1" FromRole="Marka" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Miejsca">
+    <Key>
+      <PropertyRef Name="id_miejsca" />
+    </Key>
+    <Property Name="id_miejsca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kod_pocztowy" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="miejscowosc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Pracownicy" Relationship="Self.Pracownicy_fk0" FromRole="Miejsca" ToRole="Pracownicy" />
+    <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk3" FromRole="Miejsca" ToRole="Wypozyczenia" />
+    <NavigationProperty Name="Wypozyczenia1" Relationship="Self.Wypozyczenia_fk4" FromRole="Miejsca" ToRole="Wypozyczenia" />
+  </EntityType>
+  <EntityType Name="Miejscowosc">
+    <Key>
+      <PropertyRef Name="id_miejscowosci" />
+    </Key>
+    <Property Name="id_miejscowosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="miejscowosc1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk2" FromRole="Miejscowosc" ToRole="Adres" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="id_modelu" />
+    </Key>
+    <Property Name="id_modelu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="model1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk2" FromRole="Model" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Paliwo">
+    <Key>
+      <PropertyRef Name="id_paliwa" />
+    </Key>
+    <Property Name="id_paliwa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rodzaj_paliwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk5" FromRole="Paliwo" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="id_pracownika" />
+    </Key>
+    <Property Name="id_pracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_miejsca_pracy" Type="Int32" Nullable="false" />
+    <Property Name="id_konta_pr" Type="Int32" Nullable="false" />
+    <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="data_zatrudnienia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="stanowisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Konta" Relationship="Self.Pracownicy_fk1" FromRole="Pracownicy" ToRole="Konta" />
+    <NavigationProperty Name="Miejsca" Relationship="Self.Pracownicy_fk0" FromRole="Pracownicy" ToRole="Miejsca" />
+    <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk2" FromRole="Pracownicy" ToRole="Wypozyczenia" />
+  </EntityType>
+  <EntityType Name="Samochody">
+    <Key>
+      <PropertyRef Name="id_samochodu" />
+    </Key>
+    <Property Name="id_samochodu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_wyposazenia" Type="Int32" Nullable="false" />
+    <Property Name="id_marki" Type="Int32" Nullable="false" />
+    <Property Name="id_modelu" Type="Int32" Nullable="false" />
+    <Property Name="id_typu" Type="Int32" Nullable="false" />
+    <Property Name="id_koloru" Type="Int32" Nullable="false" />
+    <Property Name="id_paliwa" Type="Int32" Nullable="false" />
+    <Property Name="rok_prod" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="poj_silnika" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="przebieg" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Kolor" Relationship="Self.Samochody_fk4" FromRole="Samochody" ToRole="Kolor" />
+    <NavigationProperty Name="Marka" Relationship="Self.Samochody_fk1" FromRole="Samochody" ToRole="Marka" />
+    <NavigationProperty Name="Model" Relationship="Self.Samochody_fk2" FromRole="Samochody" ToRole="Model" />
+    <NavigationProperty Name="Paliwo" Relationship="Self.Samochody_fk5" FromRole="Samochody" ToRole="Paliwo" />
+    <NavigationProperty Name="Wyposazenie" Relationship="Self.Samochody_fk0" FromRole="Samochody" ToRole="Wyposazenie" />
+    <NavigationProperty Name="Typ" Relationship="Self.Samochody_fk3" FromRole="Samochody" ToRole="Typ" />
+    <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk0" FromRole="Samochody" ToRole="Wypozyczenia" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Typ">
+    <Key>
+      <PropertyRef Name="id_typu" />
+    </Key>
+    <Property Name="id_typu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typ1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk3" FromRole="Typ" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Uprawnienia">
+    <Key>
+      <PropertyRef Name="id_uprawnienia" />
+    </Key>
+    <Property Name="id_uprawnienia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_konta" Type="Int32" Nullable="false" />
+    <Property Name="uprawnienie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Konta" Relationship="Self.Uprawnienia_fk0" FromRole="Uprawnienia" ToRole="Konta" />
+  </EntityType>
+  <EntityType Name="Wojewodztwo">
+    <Key>
+      <PropertyRef Name="id_wojewodztwa" />
+    </Key>
+    <Property Name="id_wojewodztwa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="wojewodztwo1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.Adres_fk3" FromRole="Wojewodztwo" ToRole="Adres" />
+  </EntityType>
+  <EntityType Name="Wyposazenie">
+    <Key>
+      <PropertyRef Name="id_wyposazenia" />
+    </Key>
+    <Property Name="id_wyposazenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rodzaj_wyp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Samochody_fk0" FromRole="Wyposazenie" ToRole="Samochody" />
+  </EntityType>
+  <EntityType Name="Wypozyczenia">
+    <Key>
+      <PropertyRef Name="id_wypozyczenia" />
+    </Key>
+    <Property Name="id_wypozyczenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_samochodu" Type="Int32" Nullable="false" />
+    <Property Name="id_klienta" Type="Int32" Nullable="false" />
+    <Property Name="id_pracownika" Type="Int32" Nullable="false" />
+    <Property Name="id_miejsca_wyp" Type="Int32" Nullable="false" />
+    <Property Name="id_miejsca_odd" Type="Int32" />
+    <Property Name="data_wyp" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="data_odd" Type="DateTime" Precision="0" />
+    <Property Name="koszt" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+    <Property Name="kaucja" Type="Decimal" Precision="20" Scale="0" />
+    <NavigationProperty Name="Klienci" Relationship="Self.Wypozyczenia_fk1" FromRole="Wypozyczenia" ToRole="Klienci" />
+    <NavigationProperty Name="Miejsca" Relationship="Self.Wypozyczenia_fk3" FromRole="Wypozyczenia" ToRole="Miejsca" />
+    <NavigationProperty Name="Miejsca1" Relationship="Self.Wypozyczenia_fk4" FromRole="Wypozyczenia" ToRole="Miejsca" />
+    <NavigationProperty Name="Pracownicy" Relationship="Self.Wypozyczenia_fk2" FromRole="Wypozyczenia" ToRole="Pracownicy" />
+    <NavigationProperty Name="Samochody" Relationship="Self.Wypozyczenia_fk0" FromRole="Wypozyczenia" ToRole="Samochody" />
+  </EntityType>
+  <Association Name="Adres_fk0">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk1">
+    <End Role="Kod_Pocztowy" Type="Self.Kod_Pocztowy" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kod_Pocztowy">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_kodu_pocztowego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk2">
+    <End Role="Miejscowosc" Type="Self.Miejscowosc" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejscowosc">
+        <PropertyRef Name="id_miejscowosci" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_miejscowosci" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Adres_fk3">
+    <End Role="Wojewodztwo" Type="Self.Wojewodztwo" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wojewodztwo">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="id_wojewodztwa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Klienci_fk0">
+    <End Role="Konta" Type="Self.Konta" Multiplicity="1" />
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konta">
+        <PropertyRef Name="id_konta" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="id_konta_kl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wypozyczenia_fk1">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk4">
+    <End Role="Kolor" Type="Self.Kolor" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kolor">
+        <PropertyRef Name="id_koloru" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_koloru" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pracownicy_fk1">
+    <End Role="Konta" Type="Self.Konta" Multiplicity="1" />
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konta">
+        <PropertyRef Name="id_konta" />
+      </Principal>
+      <Dependent Role="Pracownicy">
+        <PropertyRef Name="id_konta_pr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Uprawnienia_fk0">
+    <End Role="Konta" Type="Self.Konta" Multiplicity="1" />
+    <End Role="Uprawnienia" Type="Self.Uprawnienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konta">
+        <PropertyRef Name="id_konta" />
+      </Principal>
+      <Dependent Role="Uprawnienia">
+        <PropertyRef Name="id_konta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk1">
+    <End Role="Marka" Type="Self.Marka" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marka">
+        <PropertyRef Name="id_marki" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_marki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pracownicy_fk0">
+    <End Role="Miejsca" Type="Self.Miejsca" Multiplicity="1" />
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejsca">
+        <PropertyRef Name="id_miejsca" />
+      </Principal>
+      <Dependent Role="Pracownicy">
+        <PropertyRef Name="id_miejsca_pracy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wypozyczenia_fk3">
+    <End Role="Miejsca" Type="Self.Miejsca" Multiplicity="1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejsca">
+        <PropertyRef Name="id_miejsca" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="id_miejsca_wyp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wypozyczenia_fk4">
+    <End Role="Miejsca" Type="Self.Miejsca" Multiplicity="0..1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miejsca">
+        <PropertyRef Name="id_miejsca" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="id_miejsca_odd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk2">
+    <End Role="Model" Type="Self.Model" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="id_modelu" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_modelu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk5">
+    <End Role="Paliwo" Type="Self.Paliwo" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paliwo">
+        <PropertyRef Name="id_paliwa" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_paliwa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wypozyczenia_fk2">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="id_pracownika" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="id_pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk0">
+    <End Role="Wyposazenie" Type="Self.Wyposazenie" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wyposazenie">
+        <PropertyRef Name="id_wyposazenia" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_wyposazenia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Samochody_fk3">
+    <End Role="Typ" Type="Self.Typ" Multiplicity="1" />
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Typ">
+        <PropertyRef Name="id_typu" />
+      </Principal>
+      <Dependent Role="Samochody">
+        <PropertyRef Name="id_typu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wypozyczenia_fk0">
+    <End Role="Samochody" Type="Self.Samochody" Multiplicity="1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Samochody">
+        <PropertyRef Name="id_samochodu" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="id_samochodu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarRentalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adres" EntityType="Self.Adres" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+    <EntitySet Name="Kod_Pocztowy" EntityType="Self.Kod_Pocztowy" />
+    <EntitySet Name="Kolor" EntityType="Self.Kolor" />
+    <EntitySet Name="Konta" EntityType="Self.Konta" />
+    <EntitySet Name="Marka" EntityType="Self.Marka" />
+    <EntitySet Name="Miejsca" EntityType="Self.Miejsca" />
+    <EntitySet Name="Miejscowosc" EntityType="Self.Miejscowosc" />
+    <EntitySet Name="Model" EntityType="Self.Model" />
+    <EntitySet Name="Paliwo" EntityType="Self.Paliwo" />
+    <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+    <EntitySet Name="Samochody" EntityType="Self.Samochody" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Typ" EntityType="Self.Typ" />
+    <EntitySet Name="Uprawnienia" EntityType="Self.Uprawnienia" />
+    <EntitySet Name="Wojewodztwo" EntityType="Self.Wojewodztwo" />
+    <EntitySet Name="Wyposazenie" EntityType="Self.Wyposazenie" />
+    <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" />
+    <AssociationSet Name="Adres_fk0" Association="Self.Adres_fk0">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk1" Association="Self.Adres_fk1">
+      <End Role="Kod_Pocztowy" EntitySet="Kod_Pocztowy" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk2" Association="Self.Adres_fk2">
+      <End Role="Miejscowosc" EntitySet="Miejscowosc" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Adres_fk3" Association="Self.Adres_fk3">
+      <End Role="Wojewodztwo" EntitySet="Wojewodztwo" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="Klienci_fk0" Association="Self.Klienci_fk0">
+      <End Role="Konta" EntitySet="Konta" />
+      <End Role="Klienci" EntitySet="Klienci" />
+    </AssociationSet>
+    <AssociationSet Name="Wypozyczenia_fk1" Association="Self.Wypozyczenia_fk1">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk4" Association="Self.Samochody_fk4">
+      <End Role="Kolor" EntitySet="Kolor" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Pracownicy_fk1" Association="Self.Pracownicy_fk1">
+      <End Role="Konta" EntitySet="Konta" />
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+    </AssociationSet>
+    <AssociationSet Name="Uprawnienia_fk0" Association="Self.Uprawnienia_fk0">
+      <End Role="Konta" EntitySet="Konta" />
+      <End Role="Uprawnienia" EntitySet="Uprawnienia" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk1" Association="Self.Samochody_fk1">
+      <End Role="Marka" EntitySet="Marka" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Pracownicy_fk0" Association="Self.Pracownicy_fk0">
+      <End Role="Miejsca" EntitySet="Miejsca" />
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+    </AssociationSet>
+    <AssociationSet Name="Wypozyczenia_fk3" Association="Self.Wypozyczenia_fk3">
+      <End Role="Miejsca" EntitySet="Miejsca" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+    <AssociationSet Name="Wypozyczenia_fk4" Association="Self.Wypozyczenia_fk4">
+      <End Role="Miejsca" EntitySet="Miejsca" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk2" Association="Self.Samochody_fk2">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk5" Association="Self.Samochody_fk5">
+      <End Role="Paliwo" EntitySet="Paliwo" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Wypozyczenia_fk2" Association="Self.Wypozyczenia_fk2">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk0" Association="Self.Samochody_fk0">
+      <End Role="Wyposazenie" EntitySet="Wyposazenie" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Samochody_fk3" Association="Self.Samochody_fk3">
+      <End Role="Typ" EntitySet="Typ" />
+      <End Role="Samochody" EntitySet="Samochody" />
+    </AssociationSet>
+    <AssociationSet Name="Wypozyczenia_fk0" Association="Self.Wypozyczenia_fk0">
+      <End Role="Samochody" EntitySet="Samochody" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

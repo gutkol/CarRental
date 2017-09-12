@@ -1,0 +1,56 @@
+﻿@model CarRental.Database.Miejsca
+
+@{
+    ViewBag.Title = "Usuń Miejsce Pracy | Car Rental";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="page-header">Potwierdzenie usunięcia Miejsca Pracy</h2>
+<div class="area">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="alert alert-danger">
+                <strong>Uwaga!</strong> Czy na pewno chcesz usunąć to Miejsce Pracy?
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Ulica</label>
+                        </th>
+                        <th>
+                            <label>Numer lokalu</label>
+                        </th>
+                        <th>
+                            <label>Kod pocztowy</label>
+                        </th>
+                        <th>
+                            <label>Miejscowość</label>
+                        </th>
+                        <th>
+                            <label>Numer telefonu</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>@Model.id_miejsca</td>
+                        <td>@Model.ulica</td>
+                        <td>@Model.numer</td>
+                        <td>@Model.kod_pocztowy</td>
+                        <td>@Model.miejscowosc</td>
+                        <td>@Model.numer_tel</td>
+                    </tr>
+                </table>
+                @using (Html.BeginForm("DeleteWorkerPlace", "place", FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-danger" value="Potwierdź" />
+                }
+                @Html.ActionLink("Anuluj", "GetWorkerPlace", "place", new { }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>
